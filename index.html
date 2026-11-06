@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Homework Set 1 Results · BUAD 631-38</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,500;0,600;1,500&family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --maroon: #7A1E2E;
+    --gold: #F1B82D;
+    --ink: #231F20;
+    --muted: #5E5658;
+    --paper: #FFFFFF;
+    --wash: #FBF4E2;
+    --rule: #E3DCD3;
+    --track: #F1E9EA;
+    --heading: #7A1E2E;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #EFE9E6;
+      --muted: #B9AEB0;
+      --paper: #1C1416;
+      --wash: #2A2118;
+      --rule: #3D3033;
+      --track: #34262A;
+      --heading: #F3C9CF;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #EFE9E6; --muted: #B9AEB0; --paper: #1C1416; --wash: #2A2118;
+    --rule: #3D3033; --track: #34262A; --heading: #F3C9CF; color-scheme: dark;
+  }
+  :root { box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  *, *::before, *::after { box-sizing: inherit; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.0625rem; line-height: 1.6;
+  }
+  .page { max-width: 46rem; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+  header { border-top: 6px solid var(--maroon); padding-top: 1.75rem; margin-bottom: 2.5rem; }
+  .course { color: var(--muted); font-size: 0.95rem; margin: 0 0 0.75rem; }
+  h1, h2, h3 { font-family: "Crimson Pro", Georgia, serif; color: var(--heading); font-weight: 600; line-height: 1.15; }
+  h1 { font-size: clamp(2.2rem, 6vw, 3.1rem); margin: 0 0 1rem; letter-spacing: -0.01em; }
+  h2 { font-size: 1.75rem; margin: 3rem 0 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--gold); }
+  h3 { font-size: 1.3rem; margin: 1.75rem 0 0.4rem; }
+  p { margin: 0 0 1rem; }
+  .lede { font-family: "Crimson Pro", Georgia, serif; font-size: 1.35rem; line-height: 1.5; }
+  .sig { font-family: "Crimson Pro", Georgia, serif; font-style: italic; font-size: 1.2rem; color: var(--heading); }
+
+  /* At a glance */
+  .glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: 0; margin: 1.25rem 0 0.5rem; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .glance div { padding: 1rem 0.75rem 1rem 0; }
+  .glance dt { font-size: 0.9rem; color: var(--muted); }
+  .glance dd { margin: 0.15rem 0 0; font-family: "Crimson Pro", Georgia, serif; font-size: 1.9rem; color: var(--heading); line-height: 1.1; }
+  .glance dd small { font-family: "Libre Franklin", Arial, sans-serif; font-size: 0.85rem; color: var(--muted); }
+
+  /* Component chart: the signature element */
+  .components { list-style: none; margin: 1.5rem 0 0.5rem; padding: 0; }
+  .components li { display: grid; grid-template-columns: 13rem 1fr 3.5rem; align-items: center; gap: 1rem; padding: 0.6rem 0; border-bottom: 1px solid var(--rule); }
+  .components .name { font-weight: 500; }
+  .components .name span { display: block; font-weight: 400; font-size: 0.85rem; color: var(--muted); }
+  .bar { height: 0.9rem; background: var(--track); border-radius: 2px; position: relative; overflow: hidden; }
+  .bar i { position: absolute; inset: 0 auto 0 0; background: var(--maroon); border-right: 3px solid var(--gold); transform-origin: left; animation: grow 0.9s ease-out both; }
+  .components .pct { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .components li.low .name { color: var(--heading); }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @media (prefers-reduced-motion: reduce) { .bar i { animation: none; } }
+  @media (max-width: 34rem) {
+    .components li { grid-template-columns: 1fr 3rem; }
+    .components .bar { grid-column: 1 / -1; grid-row: 2; }
+  }
+  .note { font-size: 0.9rem; color: var(--muted); }
+
+  /* Tables */
+  .scroll { overflow-x: auto; margin: 1rem 0 1.25rem; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+  th, td { padding: 0.55rem 0.75rem; text-align: left; border-bottom: 1px solid var(--rule); }
+  th { font-weight: 600; color: var(--heading); border-bottom: 2px solid var(--maroon); }
+  td.num, th.num { text-align: right; }
+  .formula { font-family: "Crimson Pro", Georgia, serif; font-size: 1.35rem; background: var(--wash); border-left: 4px solid var(--gold); padding: 0.9rem 1.1rem; margin: 1rem 0; }
+
+  ul.themes { padding-left: 1.2rem; margin: 0.5rem 0 1rem; }
+  ul.themes li { margin-bottom: 0.75rem; }
+  ul.themes strong { color: var(--heading); font-weight: 600; }
+
+  .recognition { background: var(--wash); border-left: 4px solid var(--gold); padding: 1.1rem 1.25rem; margin: 1rem 0; }
+  .recognition p:last-child { margin-bottom: 0; }
+
+  ol.checklist { padding-left: 1.4rem; }
+  ol.checklist li { margin-bottom: 0.5rem; }
+  footer { margin-top: 3.5rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.85rem; color: var(--muted); }
+  a { color: var(--heading); }
+  a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main class="page">
+
+<header>
+  <p class="course">BUAD 631-38 Data Driven Decision-Making, Fall 2026</p>
+  <h1>Homework Set 1: how the class did</h1>
+  <p class="lede">Your first research plans are graded, curved, and posted in Canvas with an individual video from me. Here’s what the class did well, where points went, and what to carry into the next assignment.</p>
+</header>
+
+<section aria-labelledby="glance">
+  <h2 id="glance">At a glance</h2>
+  <p>Seven submissions across all three issues: two on fuel efficiency and traffic deaths, three on the value of an MBA, and two on deceptive advertising. Every paper was scored on the same six-component rubric out of 50 points.</p>
+  <dl class="glance">
+    <div><dt>Class average</dt><dd>45.1 <small>/ 50 curved</small></dd></div>
+    <div><dt>Median</dt><dd>47 <small>/ 50 curved</small></dd></div>
+    <div><dt>Range</dt><dd>39–49 <small>curved</small></dd></div>
+    <div><dt>Grade spread</dt><dd>4 A · 2 B <small>· 1 C+</small></dd></div>
+  </dl>
+  <p class="note">Before the curve, the class averaged 41.3 out of 50 (median 44, standard deviation 7.4). After the curve, the spread tightens to a standard deviation of 3.8.</p>
+</section>
+
+<section aria-labelledby="components">
+  <h2 id="components">Where points were earned</h2>
+  <p>Class average on each rubric component, as a percentage of the points available. The longer the bar, the more consistently the class nailed it.</p>
+  <ul class="components">
+    <li><div class="name">Problem definition<span>5 points</span></div><div class="bar"><i style="width:89%"></i></div><div class="pct">89%</div></li>
+    <li><div class="name">Data collection plan<span>10 points</span></div><div class="bar"><i style="width:86%"></i></div><div class="pct">86%</div></li>
+    <li><div class="name">Data quality justification<span>10 points</span></div><div class="bar"><i style="width:86%"></i></div><div class="pct">86%</div></li>
+    <li><div class="name">Data display plan<span>5 points</span></div><div class="bar"><i style="width:83%"></i></div><div class="pct">83%</div></li>
+    <li><div class="name">Data analysis plan<span>10 points</span></div><div class="bar"><i style="width:81%"></i></div><div class="pct">81%</div></li>
+    <li class="low"><div class="name">Data &amp; variables<span>10 points</span></div><div class="bar"><i style="width:74%"></i></div><div class="pct">74%</div></li>
+  </ul>
+  <p class="note">The variable specification table was the most common place to lose points, and it’s worth 10.</p>
+</section>
+
+<section aria-labelledby="curve">
+  <h2 id="curve">How the curve works</h2>
+  <p>I use the same square-root curve across my courses. It lifts every score, and it lifts lower scores the most, so one rough start doesn’t define your term.</p>
+  <p class="formula">Curved score = √(raw ÷ 50) × 50, rounded to the nearest point</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>If your raw score was</th><th class="num">Your curved score is</th><th class="num">Points added</th></tr></thead>
+      <tbody>
+        <tr><td>49</td><td class="num">49</td><td class="num">+0</td></tr>
+        <tr><td>45</td><td class="num">47</td><td class="num">+2</td></tr>
+        <tr><td>40</td><td class="num">45</td><td class="num">+5</td></tr>
+        <tr><td>35</td><td class="num">42</td><td class="num">+7</td></tr>
+        <tr><td>30</td><td class="num">39</td><td class="num">+9</td></tr>
+        <tr><td>25</td><td class="num">35</td><td class="num">+10</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="strengths">
+  <h2 id="strengths">What the class did well</h2>
+  <ul class="themes">
+    <li><strong>Problem definitions were tight.</strong> Most of you landed on a single testable question that names the comparison, the outcome, and the population. That’s the hardest part to get right, and it showed.</li>
+    <li><strong>Data quality went beyond a checklist.</strong> Nearly everyone addressed the five dimensions: accuracy, completeness, consistency, timeliness, and relevance. The strongest papers also named a specific bias and a specific fix for it.</li>
+    <li><strong>Smart data sources.</strong> Several of you chose official records, W-2s, or government data over asking people to remember numbers. That choice alone protects accuracy.</li>
+    <li><strong>Control groups.</strong> Both deceptive-advertising plans built a control ad with only the false claim removed. That’s what lets you credit the difference to the claim itself.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="gaps">
+  <h2 id="gaps">Where points were lost</h2>
+  <ul class="themes">
+    <li><strong>No standard of evidence.</strong> The highest-scoring papers put a number on what would count as support, like a $50,000 gap at Year 10 or a 10-point difference in belief rates. Words like “substantially” and “significantly” need a threshold behind them.</li>
+    <li><strong>Variables used but never defined.</strong> If your analysis uses lost income, MBA cost, or age, it needs a row in your variable table. If it isn’t in the table, you aren’t collecting it.</li>
+    <li><strong>Incomplete variable tables.</strong> Every variable needs all seven columns: definition, type, scale, units, why it’s needed, and three to five example values. Remember that type (quantitative, continuous) and scale (nominal, ordinal, interval, ratio) are different things.</li>
+    <li><strong>Sampling that doesn’t guarantee your groups.</strong> Stratifying by industry won’t give you an even split of MBA and non-MBA respondents. Stratify on the comparison you actually care about.</li>
+    <li><strong>Arguments with links your data can’t test.</strong> If your argument runs A to B to C, check that your data can measure each step. Crash records can tell you about older cars and fatalities, but not how long someone owned their car or what they paid for it.</li>
+    <li><strong>Missing components.</strong> All six components are required, each in its own section. An insightful essay that skips the variable table or the display plan will lose those points no matter how good the thinking is.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="recognition">
+  <h2 id="recognition">Recognition</h2>
+  <div class="recognition">
+    <p><strong>Chris Otjen</strong> and <strong>Juan Lepe</strong> both scored 49 out of 50. Chris justified his sample size with a margin of error and built a cumulative net-earnings chart where the crossing point is the break-even year. Juan matched every variable to a specific piece of the firm’s defense and screened out anyone who had already heard about the case.</p>
+    <p>If you want to see what a complete six-component plan looks like, these two are the models.</p>
+  </div>
+</section>
+
+<section aria-labelledby="next">
+  <h2 id="next">Before your next submission</h2>
+  <p>Watch your video feedback in Canvas first. It’s specific to your paper. Then run your next plan through this list:</p>
+  <ol class="checklist">
+    <li>My problem definition is one or two sentences: does X affect Y in Z population?</li>
+    <li>Every variable my analysis uses appears in my variable table, with all seven columns filled in.</li>
+    <li>My sampling method guarantees the groups I’m comparing, and my sample size has a reason behind it.</li>
+    <li>My collection steps are specific enough that someone else could follow them.</li>
+    <li>I address all five data quality dimensions, plus at least one bias and how I’ll reduce it.</li>
+    <li>My display plan names one chart and describes both axes.</li>
+    <li>My analysis plan says, with a number, what result would support my position and what would refute it.</li>
+  </ol>
+  <p>If your score wasn’t what you hoped, come to office hours or catch me after our Tuesday 6 PM session. Most lost points this round were structural, and structure is the easiest thing to fix.</p>
+  <p class="sig">Professor Murray</p>
+</section>
+
+<footer>University of Redlands, School of Business and Society. Class statistics include all seven Homework Set 1 submissions; individual scores and video feedback are posted privately in Canvas.</footer>
+</main>
+</body>
+</html>
